@@ -1,4 +1,5 @@
 # plf::nanotimer
+
 A simple C++ 03/11/etc timer class for ~microsecond-precision cross-platform benchmarking. The implementation is as limited and simple as possible to afford the lowest amount of overhead.
 
 
@@ -32,32 +33,29 @@ Use as follows:
 
 
 
-Timer member functions:
-=======================
+## Timer member functions:
 
-void start(): start or restart timer
+`void start()`: start or restart timer
 
-double get_elapsed_ns(): get elapsed time in nanoseconds
+`double get_elapsed_ns()`: get elapsed time in nanoseconds
 
-double get_elapsed_us(): get elapsed time in microseconds
+`double get_elapsed_us()`: get elapsed time in microseconds
 
-double get_elapsed_ms(): get elapsed time in milliseconds
-
-
-
-Non-member functions:
-=====================
-
-void plf::millisecond_delay(double x): delay the program until x milliseconds have passed
-
-void plf::microsecond_delay(double x): delay the program until x microseconds have passed
-
-void plf::nanosecond_delay(double x): delay the program until x nanoseconds have passed
+`double get_elapsed_ms()`: get elapsed time in milliseconds
 
 
 
-Timer 'pausing':
-================
+## Non-member functions:
+
+`void plf::millisecond_delay(double x)`: delay the program until x milliseconds have passed
+
+`void plf::microsecond_delay(double x)`: delay the program until x microseconds have passed
+
+`void plf::nanosecond_delay(double x)`: delay the program until x nanoseconds have passed
+
+
+
+## Timer 'pausing':
 
 I determined that a 'pause'-style function would add too much complexity to the class for simple benchmarking, which in turn might interfere with performance analysis, so if you need a 'pause' function do something like this:
 
@@ -77,3 +75,10 @@ I determined that a 'pause'-style function would add too much complexity to the 
 	results += timer.get_elapsed_ns();
 
 	std::cout << "Timing: " << results << " nanoseconds." << std::endl;
+
+
+
+## Why not use the CPU's cycle counter (RDTSC) directly?
+
+See https://stackoverflow.com/questions/13772567/how-to-get-the-cpu-cycle-count-in-x86-64-from-c; note the various issues mentioned in the responses there.
+
