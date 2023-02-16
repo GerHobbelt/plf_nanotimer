@@ -190,6 +190,11 @@
 		{
 			return get_elapsed_ms() * 1000000.0;
 		}
+
+		double get_elapsed_sec() PLF_NOEXCEPT
+		{
+			return get_elapsed_ms() / 1000.0;
+		}
 	};
 #endif
 // Else: failure warning - your OS is not supported

@@ -76,9 +76,14 @@ static inline double nanotimer_get_elapsed_us(nanotimer_data_t *store_ref)
 	return nanotimer_get_elapsed_ns(store_ref) / 1000.0;
 }
 
-static inline double nanotimer_get_elapsed_ns(nanotimer_data_t *store_ref)
+static inline double nanotimer_get_elapsed_ms(nanotimer_data_t *store_ref)
 {
 	return nanotimer_get_elapsed_ns(store_ref) / 1000000.0;
+}
+
+static inline double nanotimer_get_elapsed_sec(nanotimer_data_t *store_ref)
+{
+	return nanotimer_get_elapsed_ns(store_ref) / 1000000000.0;
 }
 
 	// Linux/BSD implementation:
@@ -132,9 +137,14 @@ static inline double nanotimer_get_elapsed_us(nanotimer_data_t *store_ref)
 	return nanotimer_get_elapsed_ns(store_ref) / 1000.0;
 }
 
-static inline double nanotimer_get_elapsed_ns(nanotimer_data_t *store_ref)
+static inline double nanotimer_get_elapsed_ms(nanotimer_data_t *store_ref)
 {
 	return nanotimer_get_elapsed_ns(store_ref) / 1000000.0;
+}
+
+static inline double nanotimer_get_elapsed_sec(nanotimer_data_t *store_ref)
+{
+	return nanotimer_get_elapsed_ns(store_ref) / 1000000000.0;
 }
 
 	// Windows implementation:
@@ -192,6 +202,11 @@ static inline double nanotimer_get_elapsed_us(nanotimer_data_t *store_ref)
 static inline double nanotimer_get_elapsed_ns(nanotimer_data_t *store_ref)
 {
 	return nanotimer_get_elapsed_ms(store_ref) * 1000000.0;
+}
+
+static inline double nanotimer_get_elapsed_sec(nanotimer_data_t *store_ref)
+{
+	return nanotimer_get_elapsed_ms(store_ref) / 1000.0;
 }
 
 #else
