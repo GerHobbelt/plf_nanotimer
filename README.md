@@ -5,6 +5,9 @@ A simple C++ 03/11/etc timer class for ~microsecond-precision cross-platform ben
 
 Use as follows:
 
+	#include "plf_nanotimer.hpp"
+
+
 	plf::nanotimer timer;
 
 
