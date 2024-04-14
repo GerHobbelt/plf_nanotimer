@@ -20,7 +20,6 @@
 #ifndef PLF_C_NANOTIMER_H
 #define PLF_C_NANOTIMER_H
 
-
 // ~Nanosecond-precision cross-platform (linux/bsd/mac/windows, C++03/C++11) simple timer class:
 
 // Mac OSX implementation:
