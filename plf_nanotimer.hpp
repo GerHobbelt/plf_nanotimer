@@ -82,18 +82,23 @@
 
 		double get_elapsed_ms() PLF_NOEXCEPT
 		{
-			return static_cast<double>(get_elapsed_ns()) / 1000000.0;
+			return get_elapsed_ns() / 1000000.0;
 		}
 
 		double get_elapsed_us() PLF_NOEXCEPT
 		{
-			return static_cast<double>(get_elapsed_ns()) / 1000.0;
+			return get_elapsed_ns() / 1000.0;
 		}
 
 		double get_elapsed_ns() PLF_NOEXCEPT
 		{
 			clock_get_time(system_clock, &time2);
 			return ((1000000000.0 * static_cast<double>(time2.tv_sec - time1.tv_sec)) + static_cast<double>(time2.tv_nsec - time1.tv_nsec));
+		}
+
+		double get_elapsed_sec() PLF_NOEXCEPT
+		{
+			return get_elapsed_ns() / 1000000000.0;
 		}
 	};
 
@@ -134,6 +139,11 @@
 		{
 			clock_gettime(CLOCK_MONOTONIC, &time2);
 			return ((1000000000.0 * static_cast<double>(time2.tv_sec - time1.tv_sec)) + static_cast<double>(time2.tv_nsec - time1.tv_nsec));
+		}
+
+		double get_elapsed_sec() PLF_NOEXCEPT
+		{
+			return get_elapsed_ns() / 1000000000.0;
 		}
 	};
 
