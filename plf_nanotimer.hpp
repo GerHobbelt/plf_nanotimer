@@ -20,6 +20,11 @@
 #ifndef PLF_NANOTIMER_H
 #define PLF_NANOTIMER_H
 
+#if !defined(__cplusplus)
+
+#include "plf_nanotimer_c_api.h"
+
+#else
 
 // Compiler-specific defines:
 
@@ -238,5 +243,7 @@ inline void millisecond_delay(const double delay_ms) PLF_NOEXCEPT
 #endif
 
 #undef PLF_NOEXCEPT
+
+#endif // defined(__cplusplus)
 
 #endif // PLF_NANOTIMER_H
