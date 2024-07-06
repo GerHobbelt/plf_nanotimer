@@ -85,6 +85,11 @@
 			clock_get_time(system_clock, &time1);
 		}
 
+		void stop() PLF_NOEXCEPT
+		{
+			time1 = {0};
+		}
+
 		double get_elapsed_ms() PLF_NOEXCEPT
 		{
 			return get_elapsed_ns() / 1000000.0;
@@ -128,6 +133,11 @@
 		void start() PLF_NOEXCEPT
 		{
 			clock_gettime(CLOCK_MONOTONIC, &time1);
+		}
+
+		void stop() PLF_NOEXCEPT
+		{
+			time1 = {0};
 		}
 
 		double get_elapsed_ms() PLF_NOEXCEPT
@@ -188,6 +198,11 @@
 		void start() PLF_NOEXCEPT
 		{
 			QueryPerformanceCounter(&ticks1);
+		}
+
+		void stop() PLF_NOEXCEPT
+		{
+			ticks1 = {0};
 		}
 
 		double get_elapsed_ms() PLF_NOEXCEPT
