@@ -202,7 +202,7 @@
 
 		void stop() PLF_NOEXCEPT
 		{
-			ticks1 = {0};
+			ticks1 = { .QuadPart = 0 };
 		}
 
 		double get_elapsed_ms() PLF_NOEXCEPT
