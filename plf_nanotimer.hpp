@@ -185,8 +185,8 @@
 	class nanotimer
 	{
 	private:
-		LARGE_INTEGER ticks1, ticks2;
-		double frequency;
+		LARGE_INTEGER ticks1{.QuadPart = 0}, ticks2{.QuadPart = 0};
+		double frequency{0.0};
 	public:
 		nanotimer() PLF_NOEXCEPT
 		{
