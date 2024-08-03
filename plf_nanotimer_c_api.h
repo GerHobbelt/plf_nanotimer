@@ -174,7 +174,7 @@ static inline int nanotimer_is_initialized(nanotimer_data_t *store_ref)
 
 static inline void nanotimer_start(nanotimer_data_t *store_ref)
 {
-	if (!store_ref->frequency)
+	if (store_ref->frequency == 0.0)
 	{
 		// code hasn't executed the initializer yet.
 		nanotimer(store_ref);
@@ -184,7 +184,7 @@ static inline void nanotimer_start(nanotimer_data_t *store_ref)
 
 static inline double nanotimer_get_elapsed_ms(nanotimer_data_t *store_ref)
 {
-	if (!store_ref->frequency)
+	if (store_ref->frequency == 0.0)
 	{
 		// code hasn't executed the initializer yet. Nor did it call nanotimer_start() earlier to start the measurement.
 		return -1;
