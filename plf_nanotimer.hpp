@@ -20,6 +20,8 @@
 #ifndef PLF_NANOTIMER_H
 #define PLF_NANOTIMER_H
 
+#include <stdint.h>
+
 #if !defined(__cplusplus)
 
 #include "plf_nanotimer_c_api.h"
@@ -110,6 +112,13 @@
 		{
 			return get_elapsed_ns() / 1000000000.0;
 		}
+
+		// use this only to grab the raw clock ticks for seeding random generations, etc.
+		void get_raw(uint64_t &ticks) const PLF_NOEXCEPT {
+			mach_timespec_t time3;
+			clock_get_time(system_clock, &time3);
+			ticks = 1000000000ULL * static_cast<uint64_t>(time3.tv_sec)) + static_cast<uint64_t>(time3.tv_nsec));
+		}
 	};
 
 
@@ -159,6 +168,13 @@
 		double get_elapsed_sec() PLF_NOEXCEPT
 		{
 			return get_elapsed_ns() / 1000000000.0;
+		}
+
+		// use this only to grab the raw clock ticks for seeding random generations, etc.
+		void get_raw(uint64_t &ticks) const PLF_NOEXCEPT {
+			struct timespec time3;
+			clock_gettime(CLOCK_MONOTONIC, &time3);
+			ticks = 1000000000ULL * static_cast<uint64_t>(time3.tv_sec)) + static_cast<uint64_t>(time3.tv_nsec));
 		}
 	};
 
@@ -224,6 +240,13 @@
 		double get_elapsed_sec() PLF_NOEXCEPT
 		{
 			return get_elapsed_ms() / 1000.0;
+		}
+
+		// use this only to grab the raw clock ticks for seeding random generations, etc.
+		void get_raw(uint64_t &ticks) const PLF_NOEXCEPT {
+			LARGE_INTEGER ticks1;
+			QueryPerformanceCounter(&ticks1);
+			ticks = static_cast<uint64_t>(ticks1.QuadPart);
 		}
 	};
 #endif
