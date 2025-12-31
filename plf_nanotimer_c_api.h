@@ -149,6 +149,7 @@ static inline double nanotimer_get_elapsed_sec(nanotimer_data_t *store_ref)
 	// Windows implementation:
 #elif defined(_WIN32)
 
+#include <winsock2.h>
 #include <windows.h>
 
 typedef struct plf_nanotimer_data
